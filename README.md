@@ -2,7 +2,7 @@
 
 A desktop-based **Excel Encryption and Decryption application** developed using **C#, WPF, ADO.NET, and SQL Server**.
 
-The application reads customer data from an Excel file, displays the data, encrypts sensitive information such as **Mobile Number, Account Number, and Email**, and stores the encrypted data securely in SQL Server. It also provides a **Decrypt** functionality to retrieve and display the original values.
+The application reads data from an Excel file, displays the records, encrypts sensitive information, stores the encrypted data in a SQL Server database, and provides decryption functionality to retrieve and store the original information.
 
 ## 📌 Features
 
@@ -13,10 +13,11 @@ The application reads customer data from an Excel file, displays the data, encry
 - 📱 Mobile Number Encryption
 - 💳 Account Number Encryption
 - 📧 Email Encryption
-- 💾 Store Data in SQL Server
-- 🔄 Retrieve and Decrypt Stored Data
-- 🗑️ Replace Existing Database Records
-- 🖥️ User-friendly WPF Interface
+- 💾 Store Encrypted Data in SQL Server
+- 🔄 Retrieve and Decrypt Data
+- 🗄️ Separate Database for Encryption and Decryption
+- 📋 Separate Tables for Encrypted and Decrypted Data
+- 🖥️ WPF-based User Interface
 
 ## 🛠️ Technologies Used
 
@@ -30,13 +31,29 @@ The application reads customer data from an Excel file, displays the data, encry
 
 ## 💾 Database
 
-**Database:** ExcelDecryptionDB
+The application uses **two separate SQL Server databases** for encryption and decryption operations.
 
-The application uses SQL Server to store encrypted customer information.
+### 🔐 Encryption Database
 
-### Database Table
+**Database Name:** `WPFDB`
 
-**Table:** `ExcelEncryption`
+This database stores the encrypted customer information.
+
+**Table Name:** `ExcelEncryption`
+
+### 🔓 Decryption Database
+
+**Database Name:** `ExcelDecryptionDB`
+
+This database stores the decrypted customer information.
+
+**Table Name:** `ExcelDecryption`
+
+## 📋 Database Tables
+
+### 🔐 ExcelEncryption Table
+
+The `ExcelEncryption` table stores customer information after sensitive fields have been encrypted.
 
 Typical fields include:
 
@@ -47,38 +64,40 @@ Typical fields include:
 - AccountNo
 - Email
 
-Sensitive fields are encrypted before being stored in the database.
+### 🔓 ExcelDecryption Table
 
-## 🔐 Encryption and Decryption Process
+The `ExcelDecryption` table stores the customer information after the encrypted values have been decrypted.
 
-### Encryption
+Typical fields include:
+
+- ID
+- Name
+- Address
+- MobileNo
+- AccountNo
+- Email
+
+## 🔐 Encryption Process
 
 1. Select an Excel file.
 2. Read the Excel data.
-3. Display the data in the application.
-4. Encrypt sensitive information.
-5. Save the encrypted values into SQL Server.
+3. Display the records in the application.
+4. Encrypt sensitive information such as Mobile Number, Account Number, and Email.
+5. Save the encrypted data into the `WPFDB` database.
+6. Store the encrypted records in the `ExcelEncryption` table.
 
-### Decryption
+## 🔓 Decryption Process
 
-1. Retrieve encrypted records from SQL Server.
+1. Retrieve the encrypted records.
 2. Decrypt the encrypted values.
-3. Display the original information.
-
-🚀 How to Run
-Clone the repository.
-Open ExcelEncryption.sln in Visual Studio.
-Create the required SQL Server database and table.
-Update the SQL Server connection string in App.config.
-Build the solution.
-Run the application.
-Select an Excel file.
-Use the application to encrypt and decrypt the required data.
+3. Restore the original information.
+4. Save the decrypted data into the `ExcelDecryptionDB` database.
+5. Store the decrypted records in the `ExcelDecryption` table.
 
 ## 📂 Project Structure
 
 ```text
-ExcelEncryption
+ExcelEncryption-Decryption
 │
 ├── ExcelEncryption
 │   ├── Properties
@@ -92,14 +111,3 @@ ExcelEncryption
 ├── ExcelEncryption.sln
 ├── .gitignore
 └── README.md
-
-🎯 Project Purpose
-
-The main purpose of this project is to demonstrate how sensitive information
-can be encrypted before database storage and decrypted when required, using C#, WPF, ADO.NET, and SQL Server.
-
-👩‍💻 Author
-Payal Saroj
-
-GitHub:
-https://github.com/payalsaroj553-boop
