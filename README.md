@@ -94,6 +94,22 @@ Typical fields include:
 4. Save the decrypted data into the `ExcelDecryptionDB` database.
 5. Store the decrypted records in the `ExcelDecryption` table.
 
+🚀 How to Run
+Clone the repository.
+Open ExcelEncryption.sln in Visual Studio.
+Create the required SQL Server databases:
+WPFDB
+ExcelDecryptionDB
+Create the required tables:
+ExcelEncryption
+ExcelDecryption
+Update the SQL Server connection strings in App.config.
+Build the solution.
+Run the application.
+Select an Excel file.
+Use the Encryption functionality to encrypt and store the data.
+Use the Decryption functionality to retrieve and store the decrypted data.
+
 ## 📂 Project Structure
 
 ```text
@@ -109,5 +125,17 @@ ExcelEncryption-Decryption
 │   └── Program.cs
 │
 ├── ExcelEncryption.sln
+
+🎯 Project Purpose
+
+The main purpose of this project is to demonstrate how sensitive customer information can be
+ encrypted before database storage and decrypted when required.
+
+👩‍💻 Author
+Payal Saroj
+
+GitHub:
+https://github.com/payalsaroj553-boop
+
 ├── .gitignore
 └── README.md
