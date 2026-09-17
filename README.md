@@ -30,7 +30,7 @@ The application reads customer data from an Excel file, displays the data, encry
 
 ## 💾 Database
 
-**Database:** SQL Server
+**Database:** ExcelDecryptionDB
 
 The application uses SQL Server to store encrypted customer information.
 
